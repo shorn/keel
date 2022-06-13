@@ -9,6 +9,4 @@ repositories {
 dependencies {
   implementation localGroovy()
   
-  implementation platform('software.amazon.awssdk:bom:2.17.116')
-  implementation 'software.amazon.awssdk:s3'
 }
