@@ -1,9 +1,24 @@
 
-import java.nio.file.Paths
-
-plugins{
+plugins {
+  id 'me.qoomon.git-versioning' version '5.2.0'
   // for clean task
-  id 'base' 
+  id 'base'
+}
+
+gitVersioning.apply {
+  refs {
+    branch('.+') {
+      version = '${ref}-SNAPSHOT'
+    }
+    tag('v(?<version>.*)') {
+      version = '${ref.version}'
+    }
+  }
+
+  // fallback in case of no matching ref configuration (e.g. shallow clone)
+  rev {
+    version = '${commit}'
+  }
 }
 
 ext{
@@ -22,4 +37,9 @@ dependencies{
 clean{
 }
 
+task showVersion(){
+  doFirst{
+    println "version: " + version
+  }
+}
 
