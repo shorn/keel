@@ -1,45 +1,32 @@
-
 plugins {
-  id 'me.qoomon.git-versioning' version '5.2.0'
-  // for clean task
+  id 'com.palantir.git-version' version '0.15.0'
   id 'base'
 }
 
-gitVersioning.apply {
-  refs {
-    branch('.+') {
-      version = '${ref}-SNAPSHOT'
-    }
-    tag('v(?<version>.*)') {
-      version = '${ref.version}'
-    }
-  }
+//version = '0.0.0-SNAPSHOT'
 
-  // fallback in case of no matching ref configuration (e.g. shallow clone)
-  rev {
-    version = '${commit}'
-  }
+
+
+ext {
 }
 
-ext{
+repositories {
 }
 
-repositories{
+configurations {
 }
 
-configurations{
-}
-
-dependencies{
+dependencies {
 }
 
 
-clean{
+clean {
 }
 
-task showVersion(){
-  doFirst{
+task showVersion() {
+  doFirst {
     println "version: " + version
+    println "xxx: " + gitVersion(prefix:'version@')
   }
 }
 
