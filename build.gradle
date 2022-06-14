@@ -25,8 +25,7 @@ clean {
 
 task showVersion() {
   doFirst {
-    println "version: " + version
-    println "xxx: " + gitVersion(prefix:'version@')
+    println "version: " + gitVersion(prefix:'version@')
   }
 }
 
