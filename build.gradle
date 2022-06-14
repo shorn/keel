@@ -36,9 +36,4 @@ dependencies {
 clean {
 }
 
-task showVersion() {
-  doFirst {
-    println "version: " + version
-  }
-}
 
